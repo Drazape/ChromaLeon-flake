@@ -18,7 +18,7 @@ Simply install the `default` package in your system environment from the added i
 ```nix
 environment.systemPackages = [
 	…
-	inputs.chromaleon.packages.${pkgs.stdenv.hostPlatform.system}.default
+	inputs.chromaleon.packages.${pkgs.stdenvNoCC.hostPlatform.system}.default
 	…
 ];
 ```
