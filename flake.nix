@@ -13,7 +13,7 @@
 	outputs = inputs@{ flake-parts, ... }:
 		flake-parts.lib.mkFlake { inherit inputs; } {
 			systems = [ "x86_64-linux" "aarch64-linux" ];
-			perSystem = { config, self', inputs', pkgs, system, ... }: {
+			perSystem = { config, self', inputs', pkgs, lib, system, ... }: {
 				packages = let pkgName = "chromaleon-gnome-extension"; in {
 					default = self'.packages.${pkgName};
 					${pkgName} = pkgs.stdenvNoCC.mkDerivation {
@@ -27,8 +27,8 @@
 
 						installPhase = ''
 							install_path=$out/share/gnome-shell/extensions/user-accent-colors@fabito02
-							${pkgs.lib.getExe' pkgs.coreutils "mkdir"} --parents -- $install_path
-							${pkgs.lib.getExe' pkgs.coreutils "cp"} --recursive --no-target-directory -- ./ $install_path
+							${lib.getExe' pkgs.coreutils "mkdir"} --parents -- $install_path
+							${lib.getExe' pkgs.coreutils "cp"} --recursive --no-target-directory -- ./ $install_path
 						'';
 
 						fixupPhase = ''
@@ -39,8 +39,8 @@
 						meta = {
 							description = "Change your GNOME Shell and GTK accent colors dynamically based on your wallpaper";
 							homepage = "https://github.com/Fabito02/ChromaLeon";
-							license = pkgs.lib.licenses.gpl3;
-							platforms = pkgs.lib.platforms.linux;
+							license = lib.licenses.gpl3;
+							platforms = lib.platforms.linux;
 						};
 					};
 				};
