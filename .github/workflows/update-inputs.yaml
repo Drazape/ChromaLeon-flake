@@ -26,8 +26,8 @@ jobs:
           flake_directory: "."
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
-          git_user_name: ${{ secrets.GIT_USER_NAME }}
-          git_user_email: ${{ secrets.GIT_USER_EMAIL }}
+          git_user_name: "Drazape"
+          git_user_email: "Drazape@outlook.com"
 
       - name: Show result
         run: |
