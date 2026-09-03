@@ -14,7 +14,7 @@ inputs = {
 …
 ```
 
-Simply install the `default` package in your system environment from the added input in a module.
+2. Simply install the `default` package in your system environment from the added input in a module.
 ```nix
 environment.systemPackages = [
 	…
